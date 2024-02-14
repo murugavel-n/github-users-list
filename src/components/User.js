@@ -29,7 +29,11 @@ const User = () => {
         <Button variant="outlined" component={RouteLink} to="/" sx={{ width: 100 }}>Home</Button>
       </Box>
       {isLoading && (
-        <CircularProgress />
+        <Box sx={{ display: 'flex', flex: 'row', flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', m: 'auto' }}>
+            <CircularProgress />
+          </Box>
+        </Box>
       )}
       {!isLoading && (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', m: 1 }}>
