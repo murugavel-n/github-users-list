@@ -38,15 +38,21 @@ const User = () => {
       {!isLoading && (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', m: 1 }}>
           {Object.keys(user).length && (
-            <Card sx={{ display: 'flex', flexDirection: 'row', width: 500 }}>
-              <CardMedia component="img" sx={{ width: 151, p: 1 }} image={user.avatar_url} alt={user.name} />
-              <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+            <Card sx={{ width: 400 }}>
+              <CardMedia component="img" sx={{ m: '0 auto', width: 200, p: 1, borderRadius: '50%' }} image={user.avatar_url} alt={user.name} />
+              <Box sx={{ display: 'flex', flexDirection: 'row', textAlign: 'center' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                   <Typography component="div" variant="h5">{user.name}</Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">{user.location}</Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">Followers: {user.followers}</Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">Following: {user.following}</Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">Repositories: {user.public_repos}</Typography>
+                  <Typography component="div" variant="subtitle1">{user.login}</Typography>
+                  {user.location && (<Typography variant="subtitle1" color="text.primary" component="div">{user.location}</Typography>)}
+                  {user.company && (
+                    <Typography variant="subtitle1" color="text.primary" component="div">{user.company}</Typography>
+                  )}
+                  <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '10px 0' }}>
+                    <Typography variant="subtitle1" color="text.secondary" component="div">{user.followers} followers</Typography>
+                    <Typography sx={{ px: 1 }} variant="subtitle1" color="text.secondary" component="div">{user.following} following</Typography>
+                    <Typography variant="subtitle1" color="text.secondary" component="div">{user.public_repos} repositories</Typography>
+                  </div>
                 </CardContent>
               </Box>
             </Card>
