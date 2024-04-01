@@ -1,13 +1,17 @@
 import { Box, Button, Card, CardContent, CardMedia, CircularProgress, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 
 const RouteLink = React.forwardRef((itemProps, ref) => <Link ref={ref} {...itemProps} role={undefined} />);
 
 const User = () => {
-  const { state: { username } = {} } = useLocation()
+  const { id: username } = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [user, setUser] = useState({})
+
+  if(!username) {
+    return null;
+  }
 
   useEffect(() => {
     if (isLoading) {
